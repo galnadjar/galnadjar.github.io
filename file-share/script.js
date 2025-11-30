@@ -131,11 +131,18 @@ window.addEventListener('load', () => {
             const base64 = decodeURIComponent(dataPart.split('=')[1]);
             const name = decodeURIComponent(namePart.split('=')[1]);
             const mimeType = getMimeType(name);
-            const dataUrl = `data:${mimeType};base64,${base64}`;
+            // Create blob for better mobile download support
+            const binaryString = atob(base64);
+            const bytes = new Uint8Array(binaryString.length);
+            for (let i = 0; i < binaryString.length; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            const blob = new Blob([bytes], { type: mimeType });
+            const blobUrl = URL.createObjectURL(blob);
             const output = document.getElementById('output');
             output.innerHTML = `
                 <p>File: ${name}</p>
-                <a id="downloadLink" href="${dataUrl}" download="${name}">Download File</a>
+                <a id="downloadLink" href="${blobUrl}" download="${name}">Download File</a>
             `;
             output.style.display = 'block';
             document.getElementById('shareZone').style.display = 'none';

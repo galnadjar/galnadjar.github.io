@@ -19,20 +19,20 @@
         </header>
         <p>Share small files securely without storing them anywhere. Files are embedded in the link and deleted when the link is closed.</p>
 
-        <label class="drop-zone" for="fileInput" id="shareZone">
+        <div class="drop-zone" id="shareZone">
             <div class="drop-zone-content">
                 <svg class="upload-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
                 </svg>
                 <p>Click to select a file to share (max 500KB)</p>
             </div>
-        </label>
+        </div>
         <input type="file" id="fileInput" style="display: none;" accept="*/*">
         <button id="createLinkBtn" disabled style="padding: 0.75rem 1.5rem; background: #ccc; color: #666; border: none; border-radius: 0.375rem; cursor: not-allowed; font-size: 1rem; margin-top: 1.25rem;">Create Share Link</button>
 
         <div id="output" style="display: none;">
             <p>Share this link with the recipient:</p>
-            <input type="text" id="shareLink" readonly>
+            <textarea id="shareLink" readonly style="width: 100%; padding: 12px; background: #282a36; color: #f8f2f4; border: 1px solid #6272a4; border-radius: 5px; margin: 10px 0; font-size: 14px; resize: none;"></textarea>
             <button onclick="copyLink()">Copy Link</button>
         </div>
     </div>

@@ -1,32 +1,6 @@
 document.getElementById('shareZone').addEventListener('click', () => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = '*/*';
-    input.style.display = 'none';
-    input.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file && file.size < 500 * 1024) {
-            selectedFile = file;
-            const btn = document.getElementById('createLinkBtn');
-            btn.disabled = false;
-            btn.style.background = 'linear-gradient(135deg, #bd93f9, #8b5cf6)';
-            btn.style.color = '#282a36';
-            btn.style.cursor = 'pointer';
-            document.querySelector('#shareZone p').textContent = `Selected: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
-        } else {
-            selectedFile = null;
-            const btn = document.getElementById('createLinkBtn');
-            btn.disabled = true;
-            btn.style.background = '#ccc';
-            btn.style.color = '#666';
-            btn.style.cursor = 'not-allowed';
-            if (file) {
-                alert('File too large (max 500KB). File size: ' + (file.size / 1024).toFixed(1) + 'KB');
-            }
-        }
-        document.body.removeChild(input);
-    });
-    document.body.appendChild(input);
+    const input = document.getElementById('fileInput');
+    input.value = '';
     input.click();
 });
 
@@ -44,6 +18,7 @@ let selectedFile = null;
 document.getElementById('homeBtn').addEventListener('click', () => {
     // Reset the page
     selectedFile = null;
+    document.getElementById('fileInput').value = '';
     document.querySelector('#shareZone p').textContent = 'Click to select a file to share (max 500KB)';
     document.getElementById('shareZone').style.display = 'block';
     const btn = document.getElementById('createLinkBtn');
@@ -89,6 +64,33 @@ document.getElementById('shareZone').addEventListener('drop', (e) => {
     }
 });
 
+document.getElementById('fileInput').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    console.log('File input change event fired');
+    console.log('File selected:', file ? file.name : 'none', 'Size:', file ? file.size : 'N/A');
+    if (file && file.size < 500 * 1024) { // 500KB limit
+        console.log('File accepted, enabling button');
+        selectedFile = file;
+        const btn = document.getElementById('createLinkBtn');
+        btn.disabled = false;
+        btn.style.background = 'linear-gradient(135deg, #bd93f9, #8b5cf6)';
+        btn.style.color = '#282a36';
+        btn.style.cursor = 'pointer';
+        document.querySelector('#shareZone p').textContent = `Selected: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+    } else {
+        console.log('File rejected or no file');
+        selectedFile = null;
+        const btn = document.getElementById('createLinkBtn');
+        btn.disabled = true;
+        btn.style.background = '#ccc';
+        btn.style.color = '#666';
+        btn.style.cursor = 'not-allowed';
+        if (file) {
+            alert('File too large (max 500KB). File size: ' + (file.size / 1024).toFixed(1) + 'KB');
+        }
+    }
+});
+
 document.getElementById('createLinkBtn').addEventListener('click', () => {
     console.log('Create link button clicked');
     const file = selectedFile;
@@ -106,8 +108,8 @@ document.getElementById('createLinkBtn').addEventListener('click', () => {
         const output = document.getElementById('output');
         output.innerHTML = `
             <p>Share link created!</p>
-            <input type="text" id="shareLink" value="${shareUrl}" readonly style="width: 100%; padding: 12px; background: #282a36; color: #f8f2f4; border: 1px solid #6272a4; border-radius: 5px; margin: 10px 0; font-size: 14px;">
-            <button onclick="copyLink()" style="padding: 12px 24px; background: linear-gradient(135deg, #bd93f9, #8b5cf6); color: #282a36; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 10px;">Copy Link</button>
+            <input type="text" id="shareLink" value="${shareUrl}" readonly style="width: 100%; padding: 0.75rem; background: #282a36; color: #f8f2f4; border: 1px solid #6272a4; border-radius: 0.3125rem; margin: 0.625rem 0; font-size: 0.875rem;">
+            <button onclick="copyLink()" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #bd93f9, #8b5cf6); color: #282a36; border: none; border-radius: 0.375rem; cursor: pointer; font-size: 1rem; margin-top: 0.625rem;">Copy Link</button>
         `;
         output.style.display = 'block';
         document.getElementById('createLinkBtn').style.display = 'none';

@@ -12,43 +12,43 @@ body {
 .container {
     text-align: center;
     background: #44475a;
-    padding: 70px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    max-width: 1000px;
+    padding: 4.375rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 1.25rem 2.5rem rgba(0,0,0,0.5);
+    max-width: 62.5rem;
     width: 90%;
-    border: 1px solid #6272a4;
+    border: 0.0625rem solid #6272a4;
 }
 
 h1 {
-    margin: 0 20px 0 0;
+    margin: 0 1.25rem 0 0;
     color: #bd93f9;
     font-weight: 600;
-    font-size: 64px;
-    text-shadow: 0 0 20px rgba(189, 147, 249, 0.5), 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 4rem;
+    text-shadow: 0 0 1.25rem rgba(189, 147, 249, 0.5), 0.125rem 0.125rem 0.25rem rgba(0,0,0,0.5);
     animation: glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
-    from { text-shadow: 0 0 10px rgba(189, 147, 249, 0.3), 2px 2px 4px rgba(0,0,0,0.5); }
-    to { text-shadow: 0 0 20px rgba(189, 147, 249, 0.5), 2px 2px 4px rgba(0,0,0,0.5); }
+    from { text-shadow: 0 0 0.625rem rgba(189, 147, 249, 0.3), 0.125rem 0.125rem 0.25rem rgba(0,0,0,0.5); }
+    to { text-shadow: 0 0 1.25rem rgba(189, 147, 249, 0.5), 0.125rem 0.125rem 0.25rem rgba(0,0,0,0.5); }
 }
 
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     position: relative;
 }
 
 #homeBtn {
     position: absolute;
     right: 0;
-    padding: 12px;
+    padding: 0.75rem;
     background: transparent;
     color: #bd93f9;
-    border: 2px solid #bd93f9;
+    border: 0.125rem solid #bd93f9;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -62,7 +62,7 @@ h1 {
     background: #bd93f9;
     color: #282a36;
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(189, 147, 249, 0.5);
+    box-shadow: 0 0.25rem 0.9375rem rgba(189, 147, 249, 0.5);
 }
 
 #homeBtn:hover {
@@ -70,16 +70,16 @@ h1 {
 }
 
 p {
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
     color: #f8f2f4;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .drop-zone {
-    border: 3px dashed #bd93f9;
-    border-radius: 15px;
-    padding: 100px;
-    margin-bottom: 20px;
+    border: 0.1875rem dashed #bd93f9;
+    border-radius: 0.9375rem;
+    padding: 6.25rem;
+    margin-bottom: 1.25rem;
     transition: all 0.4s ease;
     cursor: pointer;
     background: #282a36;
@@ -97,14 +97,14 @@ p {
     background: linear-gradient(135deg, rgba(189, 147, 249, 0.1), rgba(139, 92, 246, 0.1), rgba(255, 121, 198, 0.1));
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    border-radius: 15px;
+    border-radius: 0.9375rem;
     pointer-events: none;
 }
 
 .drop-zone:hover {
     border-color: white;
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0.375rem 1.25rem rgba(255, 255, 255, 0.3);
     background: #f8f9fa;
 }
 
@@ -149,9 +149,9 @@ p {
 }
 
 .upload-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 16px;
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 1rem;
     color: #bd93f9;
     transition: all 0.3s ease;
     animation: bounce 2s infinite;
@@ -159,13 +159,13 @@ p {
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+    40% { transform: translateY(-0.625rem); }
+    60% { transform: translateY(-0.3125rem); }
 }
 
 .drop-zone p {
     margin: 0;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #f8f2f4;
 }
 
@@ -175,20 +175,20 @@ p {
 }
 
 button {
-    padding: 12px 24px;
+    padding: 0.75rem 1.5rem;
     background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 0.375rem;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
     transition: all 0.3s ease;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0,123,255,0.3);
 }
 
 button:disabled {
@@ -199,50 +199,50 @@ button:disabled {
 }
 
 #output {
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 #output p {
-    margin: 10px 0;
+    margin: 0.625rem 0;
     color: #f8f2f4;
 }
 
 #output a {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 0.9375rem 1.875rem;
     background: linear-gradient(135deg, #bd93f9, #8b5cf6);
     color: #282a36;
     text-decoration: none;
-    border-radius: 25px;
-    margin-top: 10px;
+    border-radius: 1.5625rem;
+    margin-top: 0.625rem;
     transition: all 0.3s ease;
-    font-size: 18px;
-    box-shadow: 0 4px 15px rgba(189, 147, 249, 0.3);
+    font-size: 1.125rem;
+    box-shadow: 0 0.25rem 0.9375rem rgba(189, 147, 249, 0.3);
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0% { box-shadow: 0 4px 15px rgba(189, 147, 249, 0.3); }
-    50% { box-shadow: 0 4px 20px rgba(189, 147, 249, 0.6); }
-    100% { box-shadow: 0 4px 15px rgba(189, 147, 249, 0.3); }
+    0% { box-shadow: 0 0.25rem 0.9375rem rgba(189, 147, 249, 0.3); }
+    50% { box-shadow: 0 0.3125rem 1.25rem rgba(189, 147, 249, 0.6); }
+    100% { box-shadow: 0 0.25rem 0.9375rem rgba(189, 147, 249, 0.3); }
 }
 
 #output a:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(189, 147, 249, 0.5);
+    box-shadow: 0 0.375rem 1.25rem rgba(189, 147, 249, 0.5);
 }
 
 .file-preview {
-    margin-top: 20px;
+    margin-top: 1.25rem;
     text-align: center;
 }
 
 #previewImg {
-    max-width: 500px;
-    max-height: 500px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-bottom: 10px;
+    max-width: 31.25rem;
+    max-height: 31.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.1);
+    margin-bottom: 0.625rem;
 }
 
 #fileName {
@@ -254,46 +254,53 @@ button:disabled {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
-        margin: 10px;
-        border-radius: 10px;
+        padding: 0.9375rem;
+        margin: 0.3125rem;
+        border-radius: 0.625rem;
+        width: 95%;
     }
 
     h1 {
-        font-size: 32px;
-        margin: 0 10px 0 0;
+        font-size: 1.75rem;
+        margin: 0 0.625rem 0 0;
     }
 
     .drop-zone {
-        padding: 40px;
-        border-radius: 10px;
+        padding: 1.875rem;
+        border-radius: 0.625rem;
     }
 
     .upload-icon {
-        width: 60px;
-        height: 60px;
+        width: 3.125rem;
+        height: 3.125rem;
     }
 
     .drop-zone p {
-        font-size: 16px;
+        font-size: 0.875rem;
     }
 
     p {
-        margin-bottom: 20px;
-        font-size: 14px;
+        margin-bottom: 0.9375rem;
+        font-size: 0.8125rem;
     }
 
     #homeBtn {
-        padding: 8px;
+        padding: 0.5rem;
+    }
+
+    button {
+        padding: 0.625rem 1.125rem;
+        font-size: 0.875rem;
+        margin-top: 0.9375rem;
     }
 
     #output a {
-        padding: 12px 20px;
-        font-size: 16px;
+        padding: 0.625rem 1.125rem;
+        font-size: 0.875rem;
     }
 
     #previewImg {
-        max-width: 80vw;
-        max-height: 80vw;
+        max-width: 70vw;
+        max-height: 40vh;
     }
 }

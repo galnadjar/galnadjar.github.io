@@ -4,7 +4,8 @@ My personal website and collection of web projects hosted on GitHub Pages.
 
 ## Projects
 
-- [Image Compressor](https://galnadjar.github.io/image-compressor/) - A simple web app to compress images to under 2MB for easy uploading to various platforms.
+- [Image Compressor](https://galnadjar.github.io/image-compressor/) - A simple web app to compress images to under 2MB.
+- [File Share](https://galnadjar.github.io/file-share/) - Secure peer-to-peer file transfer for small files.
 
 ## About
 

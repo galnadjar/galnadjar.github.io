@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Share - Temporary P2P Transfer</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Secure File Share</h1>
+        <p>Transfer small files directly between devices using peer-to-peer connection. Files are not stored on any server.</p>
+
+        <div class="share-section">
+            <h2>Send a File</h2>
+            <input type="file" id="fileInput" accept="*/*">
+            <button id="createRoomBtn" disabled>Create Share Link</button>
+            <div id="roomInfo" style="display: none;">
+                <p>Share this link with the recipient:</p>
+                <input type="text" id="shareLink" readonly>
+                <button onclick="copyLink()">Copy Link</button>
+                <p>Waiting for connection...</p>
+            </div>
+        </div>
+
+        <div class="receive-section">
+            <h2>Receive a File</h2>
+            <input type="text" id="roomIdInput" placeholder="Enter room ID from sender">
+            <button id="connectBtn">Connect & Download</button>
+            <div id="downloadArea" style="display: none;">
+                <p>File received!</p>
+                <a id="downloadLink" download>Download File</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

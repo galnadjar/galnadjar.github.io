@@ -142,8 +142,8 @@ window.addEventListener('load', () => {
             const output = document.getElementById('output');
             output.innerHTML = `
                 <p>File: ${name}</p>
-                <a id="downloadLink" href="${blobUrl}" target="_blank">View/Download File</a>
-                <p style="font-size: 0.75rem; color: #f8f2f4; margin-top: 0.5rem;">Click the link to view the file. On iOS, you can save it by tapping the share button in the browser.</p>
+                <a id="downloadLink" href="${blobUrl}">View File</a>
+                <p style="font-size: 0.75rem; color: #f8f2f4; margin-top: 0.5rem;">Click to view the file in your browser. You can save it from there.</p>
             `;
             output.style.display = 'block';
             document.getElementById('shareZone').style.display = 'none';

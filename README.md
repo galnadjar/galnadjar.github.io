@@ -1,25 +1,20 @@
-# Image Compressor
+# galnadjar.github.io
 
-A simple web application to compress images to under 2MB for easy uploading to various platforms.
+My personal website and collection of web projects hosted on GitHub Pages.
 
-## Usage
+## Projects
 
-1. Open `index.html` in a web browser.
-2. Click "Choose File" to select an image.
-3. Click "Compress Image" to compress it.
-4. Download the compressed image.
+- [Image Compressor](https://galnadjar.github.io/image-compressor/) - A simple web app to compress images to under 2MB for easy uploading to various platforms.
 
-## Features
+## About
 
-- Compresses images to under 2MB
-- Maintains aspect ratio
-- Client-side processing (no data sent to server)
+This repository contains multiple web applications and tools, each in their own subdirectory. Each project is accessible via its path under `galnadjar.github.io`.
 
-## Requirements
+## Adding New Projects
 
-- Modern web browser with JavaScript enabled
+To add a new project:
+1. Create a new subdirectory (e.g., `new-project/`)
+2. Add your `index.html` and assets inside it
+3. Commit and push to deploy automatically
 
-## Troubleshooting
-
-- If compression fails, try a different image format or smaller original file.
-- Ensure the browser supports the File API.
+The project will be available at `https://galnadjar.github.io/new-project/`

@@ -3,29 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Share - Temporary P2P Transfer</title>
-    <link rel="stylesheet" href="../styles.css">
-    </head>
+    <title>File Share - Temporary Transfer</title>
+    <link rel="stylesheet" href="../image-compressor/styles.css">
+</head>
 <body>
     <div class="container">
-        <h1>Secure File Share</h1>
-        <p>Transfer small files directly between devices using peer-to-peer connection. Files are not stored on any server.</p>
+        <header class="header">
+            <h1>Secure File Share</h1>
+            <button id="homeBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9,22 9,12 15,12 15,22"></polyline>
+                </svg>
+            </button>
+        </header>
+        <p>Share small files securely without storing them anywhere. Files are embedded in the link and deleted when the link is closed.</p>
 
-    <div class="share-section">
-            <h2>Send a File</h2>
-            <input type="file" id="fileInput" accept="*/*">
-            <button id="createLinkBtn" disabled>Create Share Link</button>
-            <div id="linkInfo" style="display: none;">
-                <p>Share this link with the recipient (expires when closed):</p>
-                <input type="text" id="shareLink" readonly>
-                <button onclick="copyLink()">Copy Link</button>
+        <div class="drop-zone" id="shareZone">
+            <div class="drop-zone-content">
+                <svg class="upload-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                </svg>
+                <p>Click to select a file to share (max 500KB)</p>
             </div>
         </div>
+        <button id="createLinkBtn" disabled style="padding: 12px 24px; background: #ccc; color: #666; border: none; border-radius: 6px; cursor: not-allowed; font-size: 16px; margin-top: 20px;">Create Share Link</button>
 
-        <div class="receive-section" id="receiveSection" style="display: none;">
-            <h2>File Ready for Download</h2>
-            <p id="fileInfo"></p>
-            <a id="downloadLink" download>Download File</a>
+        <div id="output" style="display: none;">
+            <p>Share this link with the recipient:</p>
+            <input type="text" id="shareLink" readonly>
+            <button onclick="copyLink()">Copy Link</button>
         </div>
     </div>
 

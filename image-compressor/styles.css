@@ -46,21 +46,23 @@ h1 {
     position: absolute;
     right: 0;
     padding: 12px;
-    background: linear-gradient(135deg, #bd93f9, #8b5cf6);
-    color: #282a36;
-    border: none;
+    background: transparent;
+    color: #bd93f9;
+    border: 2px solid #bd93f9;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(189, 147, 249, 0.3);
+    box-shadow: none;
 }
 
 #homeBtn:hover {
+    background: #bd93f9;
+    color: #282a36;
     transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(189, 147, 249, 0.5);
+    box-shadow: 0 4px 15px rgba(189, 147, 249, 0.5);
 }
 
 #homeBtn:hover {
@@ -247,4 +249,51 @@ button:disabled {
     font-weight: bold;
     color: #f8f2f4;
     margin: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin: 0 10px 0 0;
+    }
+
+    .drop-zone {
+        padding: 40px;
+        border-radius: 10px;
+    }
+
+    .upload-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .drop-zone p {
+        font-size: 16px;
+    }
+
+    p {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    #homeBtn {
+        padding: 8px;
+    }
+
+    #output a {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    #previewImg {
+        max-width: 80vw;
+        max-height: 80vw;
+    }
 }

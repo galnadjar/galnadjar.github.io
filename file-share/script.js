@@ -1,95 +1,61 @@
-let peer = null;
-let conn = null;
-let fileData = null;
-let fileName = null;
-
 document.getElementById('fileInput').addEventListener('change', (e) => {
     const file = e.target.files[0];
-    if (file) {
-        document.getElementById('createRoomBtn').disabled = false;
-        fileData = file;
-        fileName = file.name;
+    if (file && file.size < 10 * 1024 * 1024) { // 10MB limit
+        document.getElementById('createLinkBtn').disabled = false;
+    } else {
+        alert('File too large (max 10MB)');
     }
 });
 
-document.getElementById('createRoomBtn').addEventListener('click', () => {
-    const peerId = Math.random().toString(36).substr(2, 9);
-    peer = new Peer(peerId);
-
-    peer.on('open', (id) => {
-        const shareUrl = `${window.location.origin}${window.location.pathname}?id=${id}`;
+document.getElementById('createLinkBtn').addEventListener('click', () => {
+    const file = document.getElementById('fileInput').files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+        const base64 = reader.result.split(',')[1]; // Remove data: prefix
+        const hash = `data=${encodeURIComponent(base64)};name=${encodeURIComponent(file.name)}`;
+        const shareUrl = `${window.location.origin}${window.location.pathname}#${hash}`;
         document.getElementById('shareLink').value = shareUrl;
-        document.getElementById('roomInfo').style.display = 'block';
-        document.getElementById('createRoomBtn').style.display = 'none';
-    });
-
-    peer.on('connection', (connection) => {
-        conn = connection;
-        conn.on('open', () => {
-            // Send file metadata first
-            conn.send(JSON.stringify({ name: fileName, size: fileData.size }));
-
-            // Send file data
-            const reader = new FileReader();
-            reader.onload = () => {
-                conn.send(reader.result);
-            };
-            reader.readAsArrayBuffer(fileData);
-        });
-    });
-
-    peer.on('error', (err) => {
-        console.error('Peer error:', err);
-        alert('Connection error: ' + err.message);
-    });
+        document.getElementById('linkInfo').style.display = 'block';
+        document.getElementById('createLinkBtn').style.display = 'none';
+    };
+    reader.readAsDataURL(file);
 });
 
-document.getElementById('connectBtn').addEventListener('click', () => {
-    const peerId = document.getElementById('roomIdInput').value.trim();
-    if (!peerId) {
-        alert('Please enter a room ID');
-        return;
+// Check for hash on load
+window.addEventListener('load', () => {
+    const hash = window.location.hash.substring(1);
+    if (hash.startsWith('data=')) {
+        const params = new URLSearchParams(hash);
+        const base64 = params.get('data');
+        const name = params.get('name');
+        if (base64 && name) {
+            document.querySelector('.share-section').style.display = 'none';
+            document.getElementById('receiveSection').style.display = 'block';
+            document.getElementById('fileInfo').textContent = `File: ${name}`;
+
+            const mimeType = getMimeType(name);
+            const dataUrl = `data:${mimeType};base64,${base64}`;
+            const link = document.getElementById('downloadLink');
+            link.href = dataUrl;
+            link.download = name;
+            link.textContent = `Download ${name}`;
+        }
     }
-
-    peer = new Peer();
-
-    peer.on('open', () => {
-        conn = peer.connect(peerId);
-
-        conn.on('open', () => {
-            console.log('Connected to peer');
-        });
-
-        conn.on('data', (data) => {
-            if (typeof data === 'string') {
-                // Metadata
-                const meta = JSON.parse(data);
-                fileName = meta.name;
-            } else {
-                // File data
-                const blob = new Blob([data]);
-                const url = URL.createObjectURL(blob);
-                const link = document.getElementById('downloadLink');
-                link.href = url;
-                link.download = fileName;
-                link.textContent = `Download ${fileName}`;
-                document.getElementById('downloadArea').style.display = 'block';
-                document.getElementById('connectBtn').style.display = 'none';
-            }
-        });
-    });
-
-    peer.on('error', (err) => {
-        console.error('Peer error:', err);
-        alert('Connection error: ' + err.message);
-    });
 });
 
-// Check URL for room ID
-const urlParams = new URLSearchParams(window.location.search);
-const roomId = urlParams.get('id');
-if (roomId) {
-    document.getElementById('roomIdInput').value = roomId;
+function getMimeType(filename) {
+    const ext = filename.split('.').pop().toLowerCase();
+    const mimeTypes = {
+        'txt': 'text/plain',
+        'jpg': 'image/jpeg',
+        'jpeg': 'image/jpeg',
+        'png': 'image/png',
+        'gif': 'image/gif',
+        'pdf': 'application/pdf',
+        'zip': 'application/zip',
+        'json': 'application/json'
+    };
+    return mimeTypes[ext] || 'application/octet-stream';
 }
 
 function copyLink() {

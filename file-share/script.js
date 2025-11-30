@@ -1,9 +1,3 @@
-document.getElementById('shareZone').addEventListener('click', () => {
-    const input = document.getElementById('fileInput');
-    input.value = '';
-    input.click();
-});
-
 document.getElementById('shareZone').addEventListener('dragover', (e) => {
     e.preventDefault();
     document.getElementById('shareZone').classList.add('dragover');

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Share - Temporary Transfer</title>
-    <link rel="stylesheet" href="../image-compressor/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -19,14 +19,14 @@
         </header>
         <p>Share small files securely without storing them anywhere. Files are embedded in the link and deleted when the link is closed.</p>
 
-        <div class="drop-zone" id="shareZone">
+        <label class="drop-zone" for="fileInput" id="shareZone">
             <div class="drop-zone-content">
                 <svg class="upload-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
                 </svg>
                 <p>Click to select a file to share (max 500KB)</p>
             </div>
-        </div>
+        </label>
         <input type="file" id="fileInput" style="display: none;" accept="*/*">
         <button id="createLinkBtn" disabled style="padding: 0.75rem 1.5rem; background: #ccc; color: #666; border: none; border-radius: 0.375rem; cursor: not-allowed; font-size: 1rem; margin-top: 1.25rem;">Create Share Link</button>
 
